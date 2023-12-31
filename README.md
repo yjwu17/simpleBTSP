@@ -1,5 +1,5 @@
 
-# Simple BTSP Project
+# Codes for a learning theory of binary simple BTSP 
 
 This repository contains the code for the Simple BTSP project.
 
