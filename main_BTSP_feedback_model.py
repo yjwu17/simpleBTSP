@@ -75,8 +75,8 @@ for trial in range(3):
 		image_intensity = X.sum(1).mean()
 		thr_ca1 = int(m * fp * p_w * 0.6)
 		thr_ca2 = int(m * fp * p_w * 0.6)
-		## select one threshold for learning
-		# Method1:  fast simulation (recommended)
+		## select one of the two methods for learning; method 1 is recommended for fast validation; method 2 can be used for more accuate estimation.
+		# Method1:  approximate simulation for fast validation
 		W_feed_init = X.T @ plateaus
 		W_feed_init = (W_feed_init * W_mask1) % 2
 		y_sum = X @ W_feed_init
@@ -87,7 +87,7 @@ for trial in range(3):
 		W_back = W_back_init * W_mask2.T
 		W_back = (W_back >= 1).to(precison)
 		
-		# Method2: slow simulation for running each sample
+		# Method2: accurate simulation for running each sample
 		# fq_half = fq / 2
 		# fq_ltp = fq_half
 		# fq_ltd = fq_half
